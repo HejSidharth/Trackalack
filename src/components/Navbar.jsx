@@ -1,7 +1,7 @@
 import React from "react";
 import ThemeToggle from "./Theme/ThemeToggle";
 import { Link } from "react-router-dom";
-import { SignInButton, SignUpButton, SignedOut } from "@clerk/clerk-react";
+import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 
 export default function Navbar() {
   return (
@@ -89,6 +89,9 @@ export default function Navbar() {
                 </button>
               </SignUpButton>
               </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
             </div>
           </div>
         </nav>

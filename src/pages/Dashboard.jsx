@@ -35,7 +35,7 @@ export default function Dashboard() {
             </Link>
           </div>
           <div className="flex mt-6 gap-4 sm:flex-row flex-col items-center justify-center">
-            <div className="stats shadow border rounded-xl border-neutral w-72">
+            <div className="stats shadow border rounded-xl border-neutral w-72 bg-base-200 bg-opacity-50">
               <div className="stat">
                 <div className="flex justify-between items-center">
                   <div className="stat-title">Total Applications</div>
@@ -62,7 +62,7 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="stats shadow border rounded-xl border-neutral w-72">
+            <div className="stats shadow border rounded-xl border-neutral w-72 bg-base-200 bg-opacity-50">
               <div className="stat">
                 <div className="flex justify-between items-center">
                   <div className="stat-title">Total Applications</div>
@@ -89,7 +89,7 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="stats shadow border rounded-xl border-neutral w-72">
+            <div className="stats shadow border rounded-xl border-neutral w-72 bg-base-200 bg-opacity-50">
               <div className="stat">
                 <div className="flex justify-between items-center">
                   <div className="stat-title">Total Applications</div>

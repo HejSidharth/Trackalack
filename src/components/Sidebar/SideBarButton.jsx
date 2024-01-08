@@ -1,24 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 
 const SidebarButton = ({ iconPaths, label, href }) => (
-    <li>
-        <Link
-            to={href}
-            className="flex group btn btn-ghost justify-start rounded-md transition duration-75"
-        >
-            <svg
-                className="w-5 h-5 transition duration-75"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 21"
-            >
-                {iconPaths.map((path, index) => <path key={index} d={path} />)}
-            </svg>
-            <span className="ms-3">{label}</span>
-        </Link>
-    </li>
+  <li>
+    <ScrollLink
+      activeClass="active"
+      to={href.slice(1)} // remove the '#' from the start of the id
+      spy={true}
+      smooth={true}
+      offset={-70}
+      duration={500}
+    >
+<button className='flex justify-start btn btn-ghost w-full rounded-lg'>{label}</button>    
+</ScrollLink>
+  </li>
 );
 
 export default SidebarButton;
