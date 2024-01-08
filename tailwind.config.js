@@ -5,11 +5,23 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'hero-pattern': '#1c3d5a',
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
+      {
+        black: {
+          ...require("daisyui/src/theming/themes")["black"],
+          primary: "black",
+          secondary: "white",
+        },
+      },
+
       "light",
       "dark",
       "cupcake",

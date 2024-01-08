@@ -31,12 +31,6 @@ export default function Sidebar() {
           </ul>
         </div>
       </aside>
-
-      <div class="p-4 sm:ml-64">
-        <div class="p-4 mt-14">
-          Dashboard
-        </div>
-      </div>
     </>
   );
 }
