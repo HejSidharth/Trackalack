@@ -4,6 +4,7 @@ import ThemeToggle from "../components/Theme/ThemeToggle";
 import Navbar from "../components/Navbar";
 import CountUp from "react-countup";
 import Table from "../components/Table";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   return (
@@ -14,7 +15,7 @@ export default function Dashboard() {
         <div className="flex flex-col items-start mt-6">
           <div className="flex justify-between items-center w-full mt-4">
             <h1 className="text-4xl font-bold">Dashboard</h1>
-            <button className="btn-secondary btn btn-sm rounded-lg">
+            <Link className="btn-secondary btn btn-sm rounded-lg" to='/add'>
               <svg
                 class="w-4 h-4"
                 aria-hidden="true"
@@ -31,7 +32,7 @@ export default function Dashboard() {
                 />
               </svg>
               Add Application
-            </button>
+            </Link>
           </div>
           <div className="flex mt-6 gap-4 sm:flex-row flex-col items-center justify-center">
             <div className="stats shadow border rounded-xl border-neutral w-72">

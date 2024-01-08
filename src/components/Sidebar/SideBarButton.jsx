@@ -5,7 +5,7 @@ const SidebarButton = ({ iconPaths, label, href }) => (
     <li>
         <Link
             to={href}
-            className="flex items-center p-2 group hover:bg-base-100 rounded-md transition duration-75"
+            className="flex group btn btn-ghost justify-start rounded-md transition duration-75"
         >
             <svg
                 className="w-5 h-5 transition duration-75"
