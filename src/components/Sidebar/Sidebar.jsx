@@ -7,7 +7,7 @@ export default function Sidebar() {
     <>
       <aside
         id="logo-sidebar"
-        class="fixed left-0 z-40 w-64  pt-20 transition-transform -translate-x-full sm:translate-x-0"
+        class="fixed left-0 z-40 w-64 mt-20 transition-transform -translate-x-full sm:translate-x-0 rounded-lg"
         aria-label="Sidebar"
       >
         <div class="h-full px-3 pb-4 overflow-y-auto">

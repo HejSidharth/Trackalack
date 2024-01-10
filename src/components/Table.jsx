@@ -3,12 +3,12 @@ import React from 'react'
 export default function Table() {
   return (
     <>
-<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+<div class="w-max px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <div class="flex flex-col">
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
-        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
-          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
+        <div class="rounded-lg shadow-sm overflow-hidden bg-base-200">
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b bg-base-200">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
                 API Keys

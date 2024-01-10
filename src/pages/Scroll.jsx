@@ -5,7 +5,7 @@ import { motion, useScroll } from "framer-motion";
 import Footer from "../components/Footer";
 import { useUser } from "@clerk/clerk-react";
 import { supabase } from "../supabaseClient";
-import { toast } from "react-hot-toast";
+import { ToastIcon, toast } from "react-hot-toast";
 import {
   useSession,
   useSupabaseClient,
@@ -54,13 +54,14 @@ export default function Scroll() {
   const [intDate, setIntDate] = useState("");
   const [followUp, setFollowUp] = useState("");
   const [status, setStatus] = useState("Completed");
-  const [outcome, setOutcome] = useState("Accepted");
+  const [outcome, setOutcome] = useState("N/A");
   const [notes, setNotes] = useState("");
   const userId = user?.user?.id;
-  const [start, setStart] = useState(new Date());
+  const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [eventName, setEventName] = useState("");
   const [eventDetails, setEventDetails] = useState("");
+  const [eventLocation, setEventLocation] = useState("");
 
   const handleStartChange = (event) => {
     const dateTime = new Date(event.target.value);
@@ -76,6 +77,7 @@ export default function Scroll() {
     const event = {
       summary: eventName,
       description: eventDetails,
+      location: eventLocation,
       start: {
         dateTime: start,
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -85,20 +87,36 @@ export default function Scroll() {
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       },
     };
-    await fetch(
+
+    const createEventPromise = fetch(
       "https://www.googleapis.com/calendar/v3/calendars/primary/events",
       {
         method: "POST",
         headers: {
-          "Authorization" : `Bearer ${session?.provider_token}`,
+          Authorization: `Bearer ${session?.provider_token}`,
         },
         body: JSON.stringify(event),
       }
-    ).then((data) => {
-    return data.json();
-    }).then((data) => {
-      console.log(data);
-      alert("Event Created!");
+    )
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setStart("");
+        setEnd("");
+        setEventName("");
+        setEventDetails("");
+      });
+
+    toast.promise(createEventPromise, {
+      loading: "Creating event...",
+      success: <b>Event created!</b>,
+      error: <b>Could not create event.</b>,
+      style: {
+        background: "#000000",
+        color: "#fff",
+      },
     });
   }
 
@@ -134,9 +152,9 @@ export default function Scroll() {
       setIntDate("");
       setFollowUp("");
       setStatus("Completed");
-      setOutcome("Accepted");
+      setOutcome("N/A");
       setNotes("");
-      toast.success("Hello Darkness!", {
+      toast.success("Internship Added!", {
         style: {
           borderRadius: "10px",
           background: "#000000",
@@ -151,6 +169,7 @@ export default function Scroll() {
       provider: "google",
       options: {
         scopes: "https://www.googleapis.com/auth/calendar",
+        redirectTo: window.location.href,
       },
     });
     if (error) {
@@ -192,7 +211,7 @@ export default function Scroll() {
         <div class="p-4 sm:ml-64">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: -50 }}
+              initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 3 }}
             >
@@ -204,7 +223,7 @@ export default function Scroll() {
               </p>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 3 }}
             >
@@ -398,7 +417,7 @@ export default function Scroll() {
                     for="hs-firstname-hire-us-2"
                     class="block mb-2 text-sm font-medium"
                   >
-                    Status of Application
+                    Status of Applications
                   </label>
                   <details className="dropdown w-full dropdown-hover">
                     <summary className="btn bg-transparent border border-neutral outline-none py-3 px-4 block w-full rounded-lg text-sm text-start">
@@ -423,7 +442,7 @@ export default function Scroll() {
                     </summary>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full"
+                      className="dropdown-content z-[1] menu p-2 shadow bg-base-100 bg-opacity-100 w-full rounded-lg"
                     >
                       <li>
                         <a
@@ -475,7 +494,16 @@ export default function Scroll() {
                         </svg>{" "}
                       </div>{" "}
                     </summary>
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-full">
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 bg-opacity-100 rounded-lg w-full">
+                    <li>
+                        <a
+                          onClick={() => {
+                            setOutcome("N/A");
+                          }}
+                        >
+                          N/A
+                        </a>
+                      </li>
                       <li>
                         <a
                           onClick={() => {
@@ -519,12 +547,153 @@ export default function Scroll() {
               id="rem"
               className="mt-10 bg-base-200 rounded-lg border border-neutral p-6 bg-opacity-80"
             >
-              <h1 className="flex justify-between items-center text-2xl font-bold">
-                Reminders
-                {session ? (
-                  <></>
-                ) : (
-                  <>
+              {session ? (
+                <>
+                  <h1 className="flex justify-between items-center text-2xl font-bold">
+                    Reminders
+                    <button
+                      className="btn btn-ghost btn-circle"
+                      onClick={() => {
+                        signOutNow();
+                      }}
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"
+                        />
+                      </svg>
+                    </button>
+                  </h1>{" "}
+                  <p className="text-sm text-gray-300">
+                    Add Google Calendar Events to keep track of your application process! 
+                  </p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
+                    <div>
+                      <label
+                        for="hs-firstname-hire-us-2"
+                        class="block mb-2 text-sm font-medium"
+                      >
+                        Event Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="johndoe@gmail.com"
+                        name="hs-firstname-hire-us-2"
+                        id="hs-firstname-hire-us-2"
+                        class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        value={eventName}
+                        onChange={(e) => setEventName(e.target.value)}
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        for="hs-company-website-hire-us-2"
+                        class="block mb-2 text-sm font-medium"
+                      >
+                        Event Location
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="johndoe@gmail.com"
+                        name="hs-firstname-hire-us-2"
+                        id="hs-firstname-hire-us-2"
+                        class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        value={eventLocation}
+                        onChange={(e) => setEventLocation(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-3">
+                    <label
+                      for="hs-work-email-hire-us-2"
+                      class="block mb-2 text-sm font-medium"
+                    >
+                      Event Details
+                    </label>
+                    <textarea
+                      id="hs-about-hire-us-2"
+                      name="hs-about-hire-us-2"
+                      rows="2"
+                      class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
+                      value={eventDetails}
+                      onChange={(e) => setEventDetails(e.target.value)}
+                    ></textarea>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-3">
+                    <div>
+                      <label
+                        for="hs-firstname-hire-us-2"
+                        class="block mb-2 text-sm font-medium"
+                      >
+                        Event Start Time
+                      </label>
+                      <input
+                        type="datetime-local"
+                        name="hs-company-website-hire-us-2"
+                        id="hs-company-website-hire-us-2"
+                        class="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        onChange={handleStartChange}
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        for="hs-firstname-hire-us-2"
+                        class="block mb-2 text-sm font-medium"
+                      >
+                        Event End Time
+                      </label>
+                      <input
+                        type="datetime-local"
+                        name="hs-company-website-hire-us-2"
+                        id="hs-company-website-hire-us-2"
+                        class="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        onChange={handleEndChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex w-full justify-between mt-6">
+                    <div>{/*For space reasons!*/}</div>
+                    <button
+                      className="btn-secondary btn btn-sm rounded-lg"
+                      onClick={() => {
+                        createCalendarEvent();
+                      }}
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                        />
+                      </svg>
+                      Add Reminder
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h1 className="flex justify-between items-center text-2xl font-bold">
+                    Reminders
                     <button
                       className="btn btn-ghost btn-circle"
                       onClick={() => {
@@ -545,90 +714,12 @@ export default function Scroll() {
                         />
                       </svg>{" "}
                     </button>
-                  </>
-                )}
-              </h1>{" "}
-              <p className="text-sm text-gray-300">
-                Add google reminders to keep track of your applications
-              </p>
-              <div className="mt-6">
-                <label
-                  for="hs-work-email-hire-us-2"
-                  class="block mb-2 text-sm font-medium"
-                >
-                  Event Name
-                </label>
-                <input
-                  type="url"
-                  placeholder="Interview with Acme Inc"
-                  name="hs-work-email-hire-us-2"
-                  id="hs-work-email-hire-us-2"
-                  autocomplete="url"
-                  class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
-                  value={eventName}
-                  onChange={(e) => setEventName(e.target.value)}
-                />
-              </div>
-              <div className="mt-3">
-                <label
-                  for="hs-work-email-hire-us-2"
-                  class="block mb-2 text-sm font-medium"
-                >
-                  Event Details
-                </label>
-                <textarea
-                  id="hs-about-hire-us-2"
-                  name="hs-about-hire-us-2"
-                  rows="4"
-                  class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
-                  value={eventDetails}
-                  onChange={(e) => setEventDetails(e.target.value)}
-                ></textarea>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-3">
-                <div>
-                  <label
-                    for="hs-firstname-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
-                  >
-                    Event Start Time
-                  </label>
-                  <input
-                    type="datetime-local"
-                    name="hs-company-website-hire-us-2"
-                    id="hs-company-website-hire-us-2"
-                    class="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
-                    onChange={handleStartChange}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    for="hs-firstname-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
-                  >
-                    Event End Time
-                  </label>
-                  <input
-                    type="datetime-local"
-                    name="hs-company-website-hire-us-2"
-                    id="hs-company-website-hire-us-2"
-                    class="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
-                    onChange={handleEndChange}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full justify-between mt-6">
-                <div className="code"></div>
-                <button
-                  className="btn-secondary btn btn-sm rounded-lg"
-                  onClick={() => {
-                    createCalendarEvent();
-                  }}
-                >
-                  Add Reminder
-                </button>
-              </div>
+                  </h1>{" "}
+                  <p className="text-sm text-gray-300">
+                    Please sign in to add reminders
+                  </p>
+                </>
+              )}
             </div>
             <div
               id="sub"
@@ -646,6 +737,21 @@ export default function Scroll() {
                   onClick={addData}
                   className="btn-secondary btn btn-sm rounded-lg"
                 >
+                  <svg
+                    class="w-4 h-4"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 16"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                    />
+                  </svg>
                   Save
                 </button>
               </div>

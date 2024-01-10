@@ -7,6 +7,8 @@ import Posting from "./pages/Posting";
 import AddApplication from "./pages/AddApplication";
 import Scroll from "./pages/Scroll";
 import { Toaster } from "react-hot-toast";
+import InternshipDetail from "./pages/InternshipDetail";
+import { ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
   useEffect(() => {
@@ -14,9 +16,11 @@ export default function App() {
     localStorage.setItem("theme", "black");
   });
   return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+
     <div className="hero-pattern">
       <BrowserRouter>
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster position="bottom-right" reverseOrder={false} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Error />} />
@@ -24,8 +28,11 @@ export default function App() {
           <Route path="/post" element={<Posting />} />
           <Route path="/scroll" element={<AddApplication />} />
           <Route path="/add" element={<Scroll />} />
+          <Route path="/internship/:intId" element={<InternshipDetail/>} />
+
         </Routes>
       </BrowserRouter>
-    </div>
+      </div>
+      </ThemeProvider>
   );
 }
