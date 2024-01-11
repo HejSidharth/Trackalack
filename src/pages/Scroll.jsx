@@ -47,7 +47,7 @@ export default function Scroll() {
   const [companyName, setCompanyName] = useState("");
   const [role, setRole] = useState("");
   const [location, setLocation] = useState("");
-  const [appDate, setAppDate] = useState("");
+  const [appDate, setAppDate] = useState("2024-04-01");
   const [url, setUrl] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [contact, setContact] = useState("");
