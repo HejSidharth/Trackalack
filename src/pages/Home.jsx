@@ -94,7 +94,6 @@ const Home = () => {
                         <div className="w-3 h-3 border-2 bg-red-500 border-red-500 rounded-full"></div>
                       </div>
                     </div>
-                    <img src="public\page.png" />
                   </div>
                 </div>
               </div>
