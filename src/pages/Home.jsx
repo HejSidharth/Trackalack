@@ -84,19 +84,6 @@ const Home = () => {
                   <span className="ml-3">Explore Features</span>
                 </Link>
               </div>
-              <div className="w-full mx-auto mt-20 text-center md:w-10/12">
-                <div className="relative z-0 w-full mt-8">
-                  <div className="relative overflow-hidden shadow-2xl">
-                    <div className="flex items-center flex-none px-4 bg-base-200 rounded-b-none h-11 rounded-xl">
-                      <div className="flex space-x-1.5">
-                        <div className="w-3 h-3 border-2 bg-green-500 border-green-500 rounded-full"></div>
-                        <div className="w-3 h-3 border-2 bg-yellow-400 border-yellow-400 rounded-full"></div>
-                        <div className="w-3 h-3 border-2 bg-red-500 border-red-500 rounded-full"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </section>
