@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 text-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 text-center min-h-screen">
         <section className="pt-24">
           <div className="px-12 mx-auto max-w-7xl">
             <motion.h1
