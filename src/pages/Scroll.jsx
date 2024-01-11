@@ -208,7 +208,7 @@ export default function Scroll() {
         >
           <Sidebar />
         </motion.div>
-        <div class="p-4 sm:ml-64">
+        <div className="p-4 sm:ml-64">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 0 }}
@@ -235,11 +235,11 @@ export default function Scroll() {
                 <p className="text-sm text-gray-300">
                   Please enter relevant information about the company
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
                   <div>
                     <label
                       for="hs-firstname-hire-us-2"
-                      class="block mb-2 text-sm font-medium"
+                      className="block mb-2 text-sm font-medium"
                     >
                       Company name
                     </label>
@@ -248,7 +248,7 @@ export default function Scroll() {
                       placeholder="Acme Inc"
                       name="hs-firstname-hire-us-2"
                       id="hs-firstname-hire-us-2"
-                      class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                      className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                     />
@@ -257,7 +257,7 @@ export default function Scroll() {
                   <div>
                     <label
                       for="hs-lastname-hire-us-2"
-                      class="block mb-2 text-sm font-medium"
+                      className="block mb-2 text-sm font-medium"
                     >
                       Role
                     </label>
@@ -266,17 +266,17 @@ export default function Scroll() {
                       placeholder="Fullstack Developer"
                       name="hs-lastname-hire-us-2"
                       id="hs-lastname-hire-us-2"
-                      class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                      className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
                     />
                   </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-3">
                   <div>
                     <label
                       for="hs-company-hire-us-2"
-                      class="block mb-2 text-sm font-medium"
+                      className="block mb-2 text-sm font-medium"
                     >
                       Location
                     </label>
@@ -285,7 +285,7 @@ export default function Scroll() {
                       placeholder="Chicago, IL"
                       name="hs-company-hire-us-2"
                       id="hs-company-hire-us-2"
-                      class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                      className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
                     />
@@ -294,7 +294,7 @@ export default function Scroll() {
                   <div>
                     <label
                       for="hs-company-website-hire-us-2"
-                      class="block mb-2 text-sm font-medium"
+                      className="block mb-2 text-sm font-medium"
                     >
                       Application Date
                     </label>
@@ -302,7 +302,7 @@ export default function Scroll() {
                       type="date"
                       name="hs-company-website-hire-us-2"
                       id="hs-company-website-hire-us-2"
-                      class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                      className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                       onChange={(e) => setAppDate(e.target.value)}
                     />
                   </div>
@@ -310,7 +310,7 @@ export default function Scroll() {
                 <div className="mt-3">
                   <label
                     for="hs-work-email-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Application Portal/Website
                   </label>
@@ -320,7 +320,7 @@ export default function Scroll() {
                     name="hs-work-email-hire-us-2"
                     id="hs-work-email-hire-us-2"
                     autocomplete="url"
-                    class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                    className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                   />
@@ -328,7 +328,7 @@ export default function Scroll() {
                 <div className="mt-3">
                   <label
                     for="hs-about-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Job Description
                   </label>
@@ -336,7 +336,7 @@ export default function Scroll() {
                     id="hs-about-hire-us-2"
                     name="hs-about-hire-us-2"
                     rows="4"
-                    class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
+                    className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
                     value={jobDescription}
                     onChange={(e) => setJobDescription(e.target.value)}
                   ></textarea>
@@ -351,11 +351,11 @@ export default function Scroll() {
               <p className="text-sm text-gray-300">
                 Please enter relevant information about the company
               </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
                 <div>
                   <label
                     for="hs-firstname-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Contact Information
                   </label>
@@ -364,7 +364,7 @@ export default function Scroll() {
                     placeholder="johndoe@gmail.com"
                     name="hs-firstname-hire-us-2"
                     id="hs-firstname-hire-us-2"
-                    class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                    className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                     value={contact}
                     onChange={(e) => setContact(e.target.value)}
                   />
@@ -373,7 +373,7 @@ export default function Scroll() {
                 <div>
                   <label
                     for="hs-company-website-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Interview Date
                   </label>
@@ -381,7 +381,7 @@ export default function Scroll() {
                     type="date"
                     name="hs-company-website-hire-us-2"
                     id="hs-company-website-hire-us-2"
-                    class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                    className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                     onChange={(e) => setIntDate(e.target.value)}
                   />
                 </div>
@@ -389,7 +389,7 @@ export default function Scroll() {
               <div className="mt-3">
                 <label
                   for="hs-work-email-hire-us-2"
-                  class="block mb-2 text-sm font-medium"
+                  className="block mb-2 text-sm font-medium"
                 >
                   Follow-Up Actions
                 </label>
@@ -397,7 +397,7 @@ export default function Scroll() {
                   id="hs-about-hire-us-2"
                   name="hs-about-hire-us-2"
                   rows="4"
-                  class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
+                  className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
                   value={followUp}
                   onChange={(e) => setFollowUp(e.target.value)}
                 ></textarea>
@@ -411,11 +411,11 @@ export default function Scroll() {
               <p className="text-sm text-gray-300">
                 Please enter relevant information about the company
               </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
                 <div>
                   <label
                     for="hs-firstname-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Status of Applications
                   </label>
@@ -424,7 +424,7 @@ export default function Scroll() {
                       <div className="flex justify-between items-center">
                         {status}
                         <svg
-                          class="w-3 h-3 "
+                          className="w-3 h-3 "
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -432,9 +432,9 @@ export default function Scroll() {
                         >
                           <path
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
                           />
                         </svg>{" "}
@@ -469,7 +469,7 @@ export default function Scroll() {
                 <div>
                   <label
                     for="hs-firstname-hire-us-2"
-                    class="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Outcome of Application
                   </label>
@@ -478,7 +478,7 @@ export default function Scroll() {
                       <div className="flex justify-between items-center">
                         {outcome}
                         <svg
-                          class="w-3 h-3 "
+                          className="w-3 h-3 "
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -486,9 +486,9 @@ export default function Scroll() {
                         >
                           <path
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
                           />
                         </svg>{" "}
@@ -529,7 +529,7 @@ export default function Scroll() {
               <div className="mt-3">
                 <label
                   for="hs-work-email-hire-us-2"
-                  class="block mb-2 text-sm font-medium"
+                  className="block mb-2 text-sm font-medium"
                 >
                   Notes/Comments
                 </label>
@@ -537,7 +537,7 @@ export default function Scroll() {
                   id="hs-about-hire-us-2"
                   name="hs-about-hire-us-2"
                   rows="4"
-                  class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
+                  className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                 ></textarea>
@@ -558,7 +558,7 @@ export default function Scroll() {
                       }}
                     >
                       <svg
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -566,9 +566,9 @@ export default function Scroll() {
                       >
                         <path
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"
                         />
                       </svg>
@@ -577,11 +577,11 @@ export default function Scroll() {
                   <p className="text-sm text-gray-300">
                     Add Google Calendar Events to keep track of your application process! 
                   </p>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-6">
                     <div>
                       <label
                         for="hs-firstname-hire-us-2"
-                        class="block mb-2 text-sm font-medium"
+                        className="block mb-2 text-sm font-medium"
                       >
                         Event Name
                       </label>
@@ -590,7 +590,7 @@ export default function Scroll() {
                         placeholder="johndoe@gmail.com"
                         name="hs-firstname-hire-us-2"
                         id="hs-firstname-hire-us-2"
-                        class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                         value={eventName}
                         onChange={(e) => setEventName(e.target.value)}
                       />
@@ -599,7 +599,7 @@ export default function Scroll() {
                     <div>
                       <label
                         for="hs-company-website-hire-us-2"
-                        class="block mb-2 text-sm font-medium"
+                        className="block mb-2 text-sm font-medium"
                       >
                         Event Location
                       </label>
@@ -608,7 +608,7 @@ export default function Scroll() {
                         placeholder="johndoe@gmail.com"
                         name="hs-firstname-hire-us-2"
                         id="hs-firstname-hire-us-2"
-                        class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                         value={eventLocation}
                         onChange={(e) => setEventLocation(e.target.value)}
                       />
@@ -617,7 +617,7 @@ export default function Scroll() {
                   <div className="mt-3">
                     <label
                       for="hs-work-email-hire-us-2"
-                      class="block mb-2 text-sm font-medium"
+                      className="block mb-2 text-sm font-medium"
                     >
                       Event Details
                     </label>
@@ -625,16 +625,16 @@ export default function Scroll() {
                       id="hs-about-hire-us-2"
                       name="hs-about-hire-us-2"
                       rows="2"
-                      class="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
+                      className="py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none resize-none"
                       value={eventDetails}
                       onChange={(e) => setEventDetails(e.target.value)}
                     ></textarea>
                   </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-3">
                     <div>
                       <label
                         for="hs-firstname-hire-us-2"
-                        class="block mb-2 text-sm font-medium"
+                        className="block mb-2 text-sm font-medium"
                       >
                         Event Start Time
                       </label>
@@ -642,7 +642,7 @@ export default function Scroll() {
                         type="datetime-local"
                         name="hs-company-website-hire-us-2"
                         id="hs-company-website-hire-us-2"
-                        class="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        className="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                         onChange={handleStartChange}
                       />
                     </div>
@@ -650,7 +650,7 @@ export default function Scroll() {
                     <div>
                       <label
                         for="hs-firstname-hire-us-2"
-                        class="block mb-2 text-sm font-medium"
+                        className="block mb-2 text-sm font-medium"
                       >
                         Event End Time
                       </label>
@@ -658,7 +658,7 @@ export default function Scroll() {
                         type="datetime-local"
                         name="hs-company-website-hire-us-2"
                         id="hs-company-website-hire-us-2"
-                        class="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
+                        className="mt-2 py-3 px-4 block w-full rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none bg-transparent border border-neutral outline-none"
                         onChange={handleEndChange}
                       />
                     </div>
@@ -672,7 +672,7 @@ export default function Scroll() {
                       }}
                     >
                       <svg
-                        class="w-4 h-4"
+                        className="w-4 h-4"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -680,9 +680,9 @@ export default function Scroll() {
                       >
                         <path
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                         />
                       </svg>
@@ -701,16 +701,16 @@ export default function Scroll() {
                       }}
                     >
                       <svg
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
                         viewBox="0 0 18 19"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>{" "}
                     </button>
@@ -738,7 +738,7 @@ export default function Scroll() {
                   className="btn-secondary btn btn-sm rounded-lg"
                 >
                   <svg
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -746,9 +746,9 @@ export default function Scroll() {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                     />
                   </svg>

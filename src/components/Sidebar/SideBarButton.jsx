@@ -5,7 +5,7 @@ import { Link as ScrollLink } from 'react-scroll';
 const SidebarButton = ({ iconPaths, label, href }) => (
   <li>
     <ScrollLink
-      activeClass="active"
+      activeclassName="active"
       to={href.slice(1)} // remove the '#' from the start of the id
       spy={true}
       smooth={true}

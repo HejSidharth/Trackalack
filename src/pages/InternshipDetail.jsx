@@ -33,7 +33,7 @@ function InternshipDetail() {
     <>
     <Navbar />
       <div className="min-h-screen">
-        <div class=" flex justify-center border">
+        <div className=" flex justify-center border">
           <div className="flex flex-col items-start mt-6 border">
             <div className="flex justify-between items-center w-full mt-4 border">
               <h1 className="text-4xl font-bold">{internship.companyName}</h1>

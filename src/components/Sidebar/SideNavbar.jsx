@@ -5,11 +5,11 @@ import ThemeToggle from "../Theme/ThemeToggle";
 
 export default function SideNavbar() {
   return (
-    <nav class="fixed top-0 z-50 w-full navbar">
-      <div class="px-3 py-3 lg:px-5 lg:pl-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center justify-start rtl:justify-end">
-            <Link to="/" class="flex ms-2 md:me-24">
+    <nav className="fixed top-0 z-50 w-full navbar">
+      <div className="px-3 py-3 lg:px-5 lg:pl-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center justify-start rtl:justify-end">
+            <Link to="/" className="flex ms-2 md:me-24">
               <div className="flex w-screen">
                 <svg
                   className="w-6 h-6"
