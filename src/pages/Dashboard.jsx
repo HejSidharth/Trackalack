@@ -7,7 +7,7 @@ import Table from "../components/Table";
 import { Link } from "react-router-dom";
 import DataTableDemo from "/src/components/Table/Tanstack.jsx";
 import { supabase } from "../../src/supabaseClient";
-import { RedirectToSignUp, SignedIn, useUser } from "@clerk/clerk-react";
+import { RedirectToSignUp, SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
 
 export default function Dashboard() {
   const [total, setTotal] = React.useState(0);
