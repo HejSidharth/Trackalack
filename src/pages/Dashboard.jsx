@@ -7,7 +7,7 @@ import Table from "../components/Table";
 import { Link } from "react-router-dom";
 import DataTableDemo from "/src/components/Table/Tanstack.jsx";
 import { supabase } from "../../src/supabaseClient";
-import { useUser } from "@clerk/clerk-react";
+import { RedirectToSignUp, SignedIn, useUser } from "@clerk/clerk-react";
 
 export default function Dashboard() {
   const [total, setTotal] = React.useState(0);
@@ -41,13 +41,19 @@ export default function Dashboard() {
 
   if (!user.user) {
     return (
+      <>
+      <SignedOut>
+        <RedirectToSignUp/>
+      </SignedOut>
       <div className="h-screen flex items-center justify-center">
         <span className="loading loading-infinity"> </span>
       </div>
+      </>
     );
   }
   return (
     <>
+    <SignedIn>
       <Navbar />
       <div className="min-h-screen">
         <div className=" flex justify-center">
@@ -160,6 +166,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      </SignedIn>
     </>
   );
 }
