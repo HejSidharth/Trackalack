@@ -95,28 +95,6 @@ export const deleteNote = async (id) => {
 
 export const columns = [
   {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
     accessorKey: "companyName",
     header: ({ column }) => {
       return (
@@ -289,7 +267,7 @@ export const columns = [
     },
     cell: ({ row }) => {
       const date = new Date(row.getValue("appDate"));
-      const isLessThanAWeek = Math.abs(moment().diff(date, "days")) <= 7;
+      const isLessThanAWeek = Math.abs(moment().diff(date, "days")) <= 1;
       const dateclassName = isLessThanAWeek
         ? "justify-start text-left border-0 p-0 font-semibold hover:text-red-400 text-red-300"
         : "justify-start text-left border-0 p-0 font-semibold hover:text-yellow-200";
@@ -468,6 +446,141 @@ export const columns = [
     },
   },
   {
+    accessorKey: "priority",
+    header: ({ table }) => {
+      return (
+        <div className="capitalize flex gap-1 items-center">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.900024 7.50002C0.900024 3.85495 3.85495 0.900024 7.50002 0.900024C11.1451 0.900024 14.1 3.85495 14.1 7.50002C14.1 11.1451 11.1451 14.1 7.50002 14.1C3.85495 14.1 0.900024 11.1451 0.900024 7.50002ZM7.50002 1.80002C4.35201 1.80002 1.80002 4.35201 1.80002 7.50002C1.80002 10.648 4.35201 13.2 7.50002 13.2C10.648 13.2 13.2 10.648 13.2 7.50002C13.2 4.35201 10.648 1.80002 7.50002 1.80002ZM3.07504 7.50002C3.07504 5.05617 5.05618 3.07502 7.50004 3.07502C9.94388 3.07502 11.925 5.05617 11.925 7.50002C11.925 9.94386 9.94388 11.925 7.50004 11.925C5.05618 11.925 3.07504 9.94386 3.07504 7.50002ZM7.50004 3.92502C5.52562 3.92502 3.92504 5.52561 3.92504 7.50002C3.92504 9.47442 5.52563 11.075 7.50004 11.075C9.47444 11.075 11.075 9.47442 11.075 7.50002C11.075 5.52561 9.47444 3.92502 7.50004 3.92502ZM7.50004 5.25002C6.2574 5.25002 5.25004 6.25739 5.25004 7.50002C5.25004 8.74266 6.2574 9.75002 7.50004 9.75002C8.74267 9.75002 9.75004 8.74266 9.75004 7.50002C9.75004 6.25738 8.74267 5.25002 7.50004 5.25002ZM6.05004 7.50002C6.05004 6.69921 6.69923 6.05002 7.50004 6.05002C8.30084 6.05002 8.95004 6.69921 8.95004 7.50002C8.95004 8.30083 8.30084 8.95002 7.50004 8.95002C6.69923 8.95002 6.05004 8.30083 6.05004 7.50002Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span className="font-bold">Priority</span>
+        </div>
+      );
+    },
+    cell: ({ row }) => {
+      const togglePriority = async () => {
+        let newOutcome;
+        switch (row.getValue("priority")) {
+          case "Low":
+            newOutcome = "Medium";
+            break;
+          case "Medium":
+            newOutcome = "High";
+            break;
+          case "High":
+            newOutcome = "Low";
+            break;
+          default:
+            newOutcome = "Low";
+            break;
+        }
+
+        const { error } = await supabase
+          .from("internship") // replace with your table name
+          .update({ priority: newOutcome })
+          .eq("id", row.original.id); // replace 'id' with your actual id column name
+
+        if (error) {
+          console.error("Error updating priority:", error);
+          toast.error(`${error.message}`, {
+            style: {
+              background: "#000000",
+              color: "#fff",
+            },
+          });
+        } else {
+          toast.success(`Priority is ${newOutcome}`, {
+            style: {
+              background: "#000000",
+              color: "#fff",
+            },
+          });
+        }
+      };
+      if (row.getValue("priority") === "Low") {
+        return (
+          <div
+            className="capitalize flex gap-1 items-center hover:text-green-300 cursor-pointer"
+            onClick={togglePriority}
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.5 2C7.77614 2 8 2.22386 8 2.5L8 11.2929L11.1464 8.14645C11.3417 7.95118 11.6583 7.95118 11.8536 8.14645C12.0488 8.34171 12.0488 8.65829 11.8536 8.85355L7.85355 12.8536C7.75979 12.9473 7.63261 13 7.5 13C7.36739 13 7.24021 12.9473 7.14645 12.8536L3.14645 8.85355C2.95118 8.65829 2.95118 8.34171 3.14645 8.14645C3.34171 7.95118 3.65829 7.95118 3.85355 8.14645L7 11.2929L7 2.5C7 2.22386 7.22386 2 7.5 2Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span className="font-semibold">Low</span>
+          </div>
+        );
+      } else if (row.getValue("priority") === "Medium") {
+        return (
+          <div
+            className="capitalize flex gap-1 items-center hover:text-yellow-300 cursor-pointer"
+            onClick={togglePriority}
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span className="font-semibold">Medium</span>
+          </div>
+        );
+      } else {
+        return (
+          <div
+            className="capitalize flex gap-1 items-center hover:text-red-300 cursor-pointer"
+            onClick={togglePriority}
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.14645 2.14645C7.34171 1.95118 7.65829 1.95118 7.85355 2.14645L11.8536 6.14645C12.0488 6.34171 12.0488 6.65829 11.8536 6.85355C11.6583 7.04882 11.3417 7.04882 11.1464 6.85355L8 3.70711L8 12.5C8 12.7761 7.77614 13 7.5 13C7.22386 13 7 12.7761 7 12.5L7 3.70711L3.85355 6.85355C3.65829 7.04882 3.34171 7.04882 3.14645 6.85355C2.95118 6.65829 2.95118 6.34171 3.14645 6.14645L7.14645 2.14645Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span className="font-semibold">High</span>
+          </div>
+        );
+      }
+    },
+  },
+  {
     accessorKey: "url",
     header: ({ column }) => {
       return (
@@ -563,6 +676,7 @@ export default function DataTableDemo() {
 
   const statuses = ["All", "Completed", "Not Completed"];
   const outcomes = ["All", "N/A", "Rejected", "Accepted"];
+  const priority = ["All", "Low", "Medium", "High"]
 
   React.useEffect(() => {
     const handleKeyDown = (event) => {
@@ -608,6 +722,7 @@ export default function DataTableDemo() {
         status: item.status,
         url: item.url,
         outcome: item.outcome,
+        priority: item.priority,
         id: item.id,
         intId: item.intId,
       }));
@@ -684,6 +799,16 @@ export default function DataTableDemo() {
       rowSelection,
     },
   });
+
+  function hideme(val) {
+    React.useEffect(() => {
+      const columnToHide = table.getAllColumns().find(column => (column.id === val));
+      if (columnToHide && columnToHide.getIsVisible()) {
+        columnToHide.toggleVisibility(false);
+      }
+    }, []);
+  }
+  
 
   return (
     <div className="mx-auto w-full">
@@ -893,8 +1018,7 @@ export default function DataTableDemo() {
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredRowModel().rows.length} applications.
         </div>
         <div className="space-x-2">
           <button

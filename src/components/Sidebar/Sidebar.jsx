@@ -27,11 +27,14 @@ export default function Sidebar() {
               label="Status & Outcomes"
               href="#stat"
             />
+            {/*
             <SidebarButton
               
               label="Reminders"
               href="#rem"
+              className="hidden"
             />
+            */ }
             <SidebarButton
               
               label="Submit"

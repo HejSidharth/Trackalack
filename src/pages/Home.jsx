@@ -19,7 +19,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <div className="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
+              <div className="w-full mx-auto text-center sm:text-left md:w-11/12 xl:w-9/12 md:text-center">
                 <p className="code rounded-full font-mono">Version 1.0</p>
                 <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-normal md:text-6xl md:tracking-tight">
                   <span className="text">Start</span>{" "}

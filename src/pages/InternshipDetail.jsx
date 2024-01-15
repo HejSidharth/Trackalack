@@ -26,7 +26,11 @@ function InternshipDetail() {
   }, [intId]);
 
   if (!internship) {
-    return <div>Loading...</div>;
+    return <div className='h-screen flex items-center justify-center'>
+      <span className='loading loading-infinity'>
+        {/* The Loader */}
+      </span>
+    </div>;
   }
 
   return (

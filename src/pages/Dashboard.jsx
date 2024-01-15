@@ -56,8 +56,8 @@ export default function Dashboard() {
     <SignedIn>
       <Navbar />
       <div className="min-h-screen">
-        <div className=" flex justify-center">
-          <div className="flex flex-col items-start mt-6">
+        <div className=" flex justify-center px-4 sm:px-0">
+          <div className="flex flex-col items-center sm:items-start mt-6">
             <div className="flex justify-between items-center w-full mt-4">
               <h1 className="text-4xl font-bold">Dashboard</h1>
               <Link className="btn-secondary btn btn-sm rounded-lg" to="/add">
@@ -79,7 +79,7 @@ export default function Dashboard() {
                 Add Application
               </Link>
             </div>
-            <div className="flex mt-6 gap-4 sm:flex-row flex-col items-center justify-center">
+            <div className="sm:flex mt-6 gap-4 sm:flex-row flex-col items-center justify-center hidden">
               <div className="stats shadow border rounded-xl border-neutral w-72 bg-base-200 bg-opacity-50">
                 <div className="stat">
                   <div className="flex justify-between items-center">

@@ -13,6 +13,7 @@ import {
 } from "@supabase/auth-helpers-react";
 import DateTimePicker from "react-datetime-picker";
 import { data } from "autoprefixer";
+import { useNavigate } from "react-router-dom";
 
 export default function Scroll() {
   const session = useSession(); //Tokens
@@ -55,6 +56,7 @@ export default function Scroll() {
   const [followUp, setFollowUp] = useState("");
   const [status, setStatus] = useState("Completed");
   const [outcome, setOutcome] = useState("N/A");
+  const [priority, setPriority] = useState("Low")
   const [notes, setNotes] = useState("");
   const userId = user?.user?.id;
   const [start, setStart] = useState("");
@@ -119,6 +121,7 @@ export default function Scroll() {
       },
     });
   }
+  const navigate = useNavigate();
 
   async function addData() {
     const { data, error } = await supabase.from("internship").insert([
@@ -136,6 +139,7 @@ export default function Scroll() {
         status,
         outcome,
         notes,
+        priority,
       },
     ]);
 
@@ -145,7 +149,7 @@ export default function Scroll() {
       setCompanyName("");
       setRole("");
       setLocation("");
-      setAppDate("");
+      setAppDate("2024-04-01");
       setUrl("");
       setJobDescription("");
       setContact("");
@@ -153,6 +157,7 @@ export default function Scroll() {
       setFollowUp("");
       setStatus("Completed");
       setOutcome("N/A");
+      setPriority("Low")
       setNotes("");
       toast.success("Internship Added!", {
         style: {
@@ -161,6 +166,7 @@ export default function Scroll() {
           color: "#fff",
         },
       });
+      navigate('/dashboard'); // Redirect to the dashboard
     }
   }
 
@@ -465,7 +471,6 @@ export default function Scroll() {
                     </ul>
                   </details>
                 </div>
-
                 <div>
                   <label
                     for="hs-firstname-hire-us-2"
@@ -527,6 +532,65 @@ export default function Scroll() {
                 </div>
               </div>
               <div className="mt-3">
+                  <label
+                    for="hs-firstname-hire-us-2"
+                    className="block mb-2 text-sm font-medium"
+                  >
+                    Priority
+                  </label>
+                  <details className="dropdown w-full">
+                    <summary className="btn bg-transparent border border-neutral outline-none py-3 px-4 block w-full rounded-lg text-sm text-start">
+                      <div className="flex justify-between items-center">
+                        {priority}
+                        <svg
+                          className="w-3 h-3 "
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 8"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+                          />
+                        </svg>{" "}
+                      </div>{" "}
+                    </summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 bg-opacity-100 rounded-lg w-full">
+                    <li>
+                        <a
+                          onClick={() => {
+                            setPriority("Low");
+                          }}
+                        >
+                          Low
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          onClick={() => {
+                            setPriority("Medium");
+                          }}
+                        >
+                          Medium
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          onClick={() => {
+                            setPriority("High");
+                          }}
+                        >
+                          High
+                        </a>
+                      </li>
+                    </ul>
+                  </details>
+                </div>
+              <div className="mt-3">
                 <label
                   for="hs-work-email-hire-us-2"
                   className="block mb-2 text-sm font-medium"
@@ -545,7 +609,7 @@ export default function Scroll() {
             </div>
             <div
               id="rem"
-              className="mt-10 bg-base-200 rounded-lg border border-neutral p-6 bg-opacity-80"
+              className="mt-10 bg-base-200 rounded-lg border border-neutral p-6 bg-opacity-80 hidden"
             >
               {session ? (
                 <>
