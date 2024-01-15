@@ -9,7 +9,7 @@ import { supabase } from "./supabaseClient.js";
 
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
+console.log(PUBLISHABLE_KEY);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

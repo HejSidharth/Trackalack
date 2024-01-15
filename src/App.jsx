@@ -9,6 +9,7 @@ import Scroll from "./pages/Scroll";
 import { Toaster } from "react-hot-toast";
 import InternshipDetail from "./pages/InternshipDetail";
 import { ThemeProvider } from "./context/ThemeContext";
+import Privacy from "./pages/Privacy";
 
 export default function App() {
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/scroll" element={<AddApplication />} />
           <Route path="/add" element={<Scroll />} />
           <Route path="/internship/:intId" element={<InternshipDetail/>} />
+          <Route path="/privacy" element={<Privacy />} />
 
         </Routes>
       </BrowserRouter>
