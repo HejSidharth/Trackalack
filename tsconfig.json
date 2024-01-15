@@ -19,5 +19,5 @@
         "@/*": ["src/*"] // Same here: adjust 'src/' if needed.
       }
     },
-    "include": ["src"]
+    "include": ["src", "server.js"]
   }
