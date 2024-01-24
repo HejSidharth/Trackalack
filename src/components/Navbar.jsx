@@ -33,7 +33,7 @@ export default function Navbar() {
             </span>
             </Link>
             <div className="flex ml-6 gap-3">
-            <Link className="font-semibold text-sm btn btn-sm btn-ghost rounded-full" to="/dashboard" aria-current="page">
+            <Link className="font-semibold text-sm btn btn-sm btn-ghost rounded-full" to="/test" aria-current="page">
                 Dashboard
               </Link>
             </div>              
