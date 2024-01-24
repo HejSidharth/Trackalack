@@ -36,9 +36,6 @@ export default function Navbar() {
             <Link className="font-semibold text-sm btn btn-sm btn-ghost rounded-full" to="/dashboard" aria-current="page">
                 Dashboard
               </Link>
-              <Link className="font-semibold text-sm btn btn-sm btn-ghost rounded-full" to="/dashboard" aria-current="page">
-                Profile
-              </Link>
             </div>              
           </div>
           <div

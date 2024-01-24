@@ -5,9 +5,11 @@ import { deleteNote } from "../utlils/Notes/deleteUtil";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { SignedIn } from "@clerk/clerk-react";
 
 const Home = () => {
+  const navigation = useNavigate();
   return (
     <>
       <Navbar />
@@ -46,7 +48,7 @@ const Home = () => {
                   to="/dashboard"
                 >
                   <svg
-                    className="w-3 h-3 "
+                    className="w-3 h-3"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -64,24 +66,24 @@ const Home = () => {
                 </Link>
                 <Link
                   className="group inline-flex items-center justify-center rounded-lg py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 animate-fade-in-left btn btn-ghost"
-                  to="/dashboard"
+                  to="/privacy"
                 >
                   <svg
-                    className="w-3 h-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
                     fill="none"
-                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-3 h-3"
                   >
                     <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
+                      d="M5 4.63601C5 3.76031 5.24219 3.1054 5.64323 2.67357C6.03934 2.24705 6.64582 1.9783 7.5014 1.9783C8.35745 1.9783 8.96306 2.24652 9.35823 2.67208C9.75838 3.10299 10 3.75708 10 4.63325V5.99999H5V4.63601ZM4 5.99999V4.63601C4 3.58148 4.29339 2.65754 4.91049 1.99307C5.53252 1.32329 6.42675 0.978302 7.5014 0.978302C8.57583 0.978302 9.46952 1.32233 10.091 1.99162C10.7076 2.65557 11 3.57896 11 4.63325V5.99999H12C12.5523 5.99999 13 6.44771 13 6.99999V13C13 13.5523 12.5523 14 12 14H3C2.44772 14 2 13.5523 2 13V6.99999C2 6.44771 2.44772 5.99999 3 5.99999H4ZM3 6.99999H12V13H3V6.99999Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
                   </svg>
-                  <span className="ml-3">Explore Features</span>
+                  <span className="ml-3">Explore Privacy</span>
                 </Link>
               </div>
             </motion.div>
