@@ -28,11 +28,12 @@ const Home = () => {
                   <span className="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">
                     sparking excitement
                   </span>{" "}
-                  <span className="text">for your internship journey!</span>
+                  <span className="text">for your academic journey!</span>
                 </h1>
                 <p className="px-0 mb-8 text-lg md:text-xl lg:px-24">
-                  Accelerate your career path with our dynamic internship
-                  tracking app - your key to enhanced productivity and success!
+                  Boost your studies with our sleek classwork tracking app -
+                  your tool for staying on top of assignments and deadlines
+                  effortlessly!
                 </p>
               </div>
             </motion.h1>
@@ -45,7 +46,7 @@ const Home = () => {
               <div className="mt-12 flex flex-col justify-center gap-y-5 sm:mt-10 sm:flex-row sm:gap-y-0 sm:gap-x-6">
                 <Link
                   className="group inline-flex items-center justify-center rounded-lg py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 animate-fade-in-left btn btn-ghost"
-                  to="/dashboard"
+                  to="/test"
                 >
                   <svg
                     className="w-3 h-3"

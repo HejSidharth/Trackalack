@@ -52,8 +52,8 @@ export default function ClassDashboard() {
   return (
     <>
     <SignedIn>
-      <Navbar />
       <div className="min-h-screen">
+      <Navbar />
         <div className=" flex justify-center px-4 sm:px-0">
           <div className="flex flex-col items-center sm:items-start mt-6">
             <div className="flex justify-between items-center w-full mt-4">

@@ -79,9 +79,9 @@ function ClassDetails() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="">
+        <div className="min-h-screen">
         <Navbar />
-        <div className="">
           <motion.div>
             <BookmarkSidebar />
           </motion.div>
